@@ -4,11 +4,7 @@
   "description": "",
   "main": "index.js",
   "bin": "index.js",
-  "scripts": {
-    "start": "yarn run swagger-ui-watcher --no-open --host 0.0.0.0 $SWAGGER_YAML_FILE",
-    "resolve-allof": "node cmd/resolve-allof.js",
-    "generate-swaggger-bundle": "yarn run swagger-ui-watcher $SWAGGER_YAML_FILE -b $SWAGGER_BUNDLE_JSON_FILE && yarn run resolve-allof $SWAGGER_BUNDLE_JSON_FILE $SWAGGER_BUNDLE_JSON_FILE"
-  },
+  "scripts": {},
   "author": "Kei Takahashi <dameleon.develop@gmail.com>",
   "license": "MIT",
   "private": false,
