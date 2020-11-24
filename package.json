@@ -1,0 +1,21 @@
+{
+  "name": "openapi-toolchain",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "bin": "index.js",
+  "scripts": {
+    "start": "yarn run swagger-ui-watcher --no-open --host 0.0.0.0 $SWAGGER_YAML_FILE",
+    "resolve-allof": "node cmd/resolve-allof.js",
+    "generate-swaggger-bundle": "yarn run swagger-ui-watcher $SWAGGER_YAML_FILE -b $SWAGGER_BUNDLE_JSON_FILE && yarn run resolve-allof $SWAGGER_BUNDLE_JSON_FILE $SWAGGER_BUNDLE_JSON_FILE"
+  },
+  "author": "Kei Takahashi <dameleon.develop@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "chokidar": "^3.4.3",
+    "commander": "^6.2.0",
+    "json-schema-resolve-allof": "^1.5.0",
+    "swagger-ui-watcher": "^2.1.11"
+  }
+}
