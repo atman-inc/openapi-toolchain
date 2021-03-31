@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+const process = require('process')
 const fs = require('fs')
 const package = require('./package.json')
 const { program } = require('commander')
@@ -55,6 +56,7 @@ pm.command('bundle <inFile> <outPath>')
             watcher.close().then(() => {
                 fs.unlinkSync(outPath)
             })
+            process.exit(1)
         })
     })
 
