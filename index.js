@@ -39,17 +39,21 @@ pm.command('bundle <inFile> <outPath>')
 
         await new Promise((resolve, reject) => {
             watcher.on('change', () => {
-                const json = JSON.parse(fs.readFileSync(outPath, 'utf8').toString())
-                const out = resolveAllOf(json)
+                try{
+                    const json = JSON.parse(fs.readFileSync(outPath, 'utf8').toString())
+                    const out = resolveAllOf(json)
 
-                fs.writeFileSync(outPath, JSON.stringify(out, null, 2))
-                watcher.close().then(resolve).catch(reject)
+                    fs.writeFileSync(outPath, JSON.stringify(out, null, 2))
+                    watcher.close().then(resolve).catch(reject)
+                } catch (e) {
+                    reject(e)
+                }
             })
 
             require('swagger-ui-watcher').build(
-                inFile,
-                undefined,
-                outPath
+              inFile,
+              undefined,
+              outPath
             )
         }).catch((e) => {
             console.error(`failed to create bundle: ${e}`)
