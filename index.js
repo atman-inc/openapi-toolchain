@@ -46,8 +46,7 @@ pm.command('bundle <inFile> <outPath>')
                     fs.writeFileSync(outPath, JSON.stringify(out, null, 2))
                     watcher.close().then(resolve).catch(reject)
                 } catch (e) {
-                    console.warn(e)
-                    //reject(e)
+                    reject(e)
                 }
             })
 
