@@ -35,7 +35,7 @@ pm.command('bundle <inFile> <outPath>')
         } finally {
             fs.closeSync(fs.openSync(outPath, 'w'));
         }
-        const watcher = chokidar.watch(outPath)
+        const watcher = chokidar.watch(outPath, { usePolling: true, interval: 500 })
 
         await new Promise((resolve, reject) => {
             watcher.on('change', () => {
