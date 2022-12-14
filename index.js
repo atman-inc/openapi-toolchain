@@ -39,8 +39,14 @@ pm.command('bundle <inFile> <outPath>')
 
         await new Promise((resolve, reject) => {
             watcher.on('change', () => {
-                try{
-                    const json = JSON.parse(fs.readFileSync(outPath, 'utf8').toString())
+                let json = null
+
+                try {
+                    json = JSON.parse(fs.readFileSync(outPath, 'utf8').toString())
+                } catch(e) {
+                    return
+                }
+                try {
                     const out = resolveAllOf(json)
 
                     fs.writeFileSync(outPath, JSON.stringify(out, null, 2))
